@@ -1,9 +1,10 @@
-from app_config import bot
+from app_config import bot, logger
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     # bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+    logger.console_logger.info('Start message')
     bot.send_message(message.chat.id, 'Hello, ' + message.from_user.first_name)
 
 
