@@ -22,4 +22,6 @@ if __name__ == '__main__':
 
     logger.console_logger.info('Starting app')
 
+    print('Hello heroku logs')
+
     app.run()
