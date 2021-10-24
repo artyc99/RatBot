@@ -12,6 +12,7 @@ else:
 
 logger.console_logger.info('Starting app')
 
+
 def configurate(app):
 
     app.config['SECRET_KEY'] = 'Some-my-very-secret-key'

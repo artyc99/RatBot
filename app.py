@@ -13,6 +13,4 @@ app = configurate(app)
 
 if __name__ == '__main__':
 
-    print('Hello heroku logs')
-
     app.run()
