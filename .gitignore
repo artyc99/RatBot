@@ -2,3 +2,4 @@
 /Docker-compose.yml
 /Dockerfile
 .idea/
+/test.py
