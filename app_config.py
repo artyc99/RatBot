@@ -3,9 +3,10 @@ import os
 from bot_logger import Log
 
 if 'LOG_LEVEL' in os.environ.keys():
-    logger = Log('logs/bot.log', os.environ['LOG_LEVEL'])
     if 'LOGGER' in os.environ.keys():
         logger = Log('logs/bot.log', os.environ['LOG_LEVEL'], os.environ['LOGGER'])
+    else:
+        logger = Log('logs/bot.log', os.environ['LOG_LEVEL'])
 else:
     raise EnvironmentError
 
