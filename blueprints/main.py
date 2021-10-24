@@ -25,6 +25,6 @@ def index():
 def getMessage():
     json_string = request.get_data().decode('utf-8')
     update = telebot.types.Update.de_json(json_string)
-    pprint.pprint(update)
+    pprint.pprint(json_string)
     bot.process_new_updates([update])
     return '!', 200
