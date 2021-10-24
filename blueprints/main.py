@@ -1,11 +1,28 @@
-from flask import Blueprint
+import os
 
-from app_config import logger
+import telebot
+from flask import Blueprint, request
+
+from app_config import logger, bot
 
 main = Blueprint('main', __name__)
 
 
 @main.route('/')
 def index():
-    logger.console_logger.info('Index hello logs')
-    return 'Hello'
+
+    if 'APP_URL' in os.environ.keys():
+
+        bot.remove_webhook()
+        bot.set_webhook(url=os.environ['APP_URL'] + os.environ['TELEGRAM_BOT_TOKEN'])
+
+    logger.console_logger.info('Reset webhook')
+    return '!', 200
+
+
+@main.route('/' + os.environ['TELEGRAM_BOT_TOKEN'], methods=['POST'])
+def getMessage():
+    json_string = request.get_data().decode('utf-8')
+    update = telebot.types.Update.de_json(json_string)
+    bot.process_new_updates([update])
+    return '!', 200

@@ -1,5 +1,7 @@
 import os
 
+import telebot
+
 from bot_logger import Log
 
 if 'LOG_LEVEL' in os.environ.keys():
@@ -11,6 +13,13 @@ else:
     raise EnvironmentError
 
 logger.console_logger.info('Starting app')
+
+if 'TELEGRAM_BOT_TOKEN' in os.environ.keys():
+    bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
+else:
+    raise EnvironmentError
+
+logger.console_logger.info('Bot token set')
 
 
 def configurate(app):
