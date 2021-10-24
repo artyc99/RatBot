@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 
-from app_configure import configurate
+from app_config import configurate
 
 from bot_logger import Log
 
