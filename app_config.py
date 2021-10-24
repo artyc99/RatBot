@@ -21,6 +21,12 @@ else:
 
 logger.console_logger.info('Bot token set')
 
+if 'APP_URL' in os.environ.keys():
+    bot.remove_webhook()
+    bot.set_webhook(url=os.environ['APP_URL'] + os.environ['TELEGRAM_BOT_TOKEN'])
+
+logger.console_logger.info('Set webhook')
+
 
 def configurate(app):
 
