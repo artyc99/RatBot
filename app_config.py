@@ -16,16 +16,17 @@ logger.console_logger.info('Starting app')
 
 if 'TELEGRAM_BOT_TOKEN' in os.environ.keys():
     bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
+
+    if 'APP_URL' in os.environ.keys():
+        bot.remove_webhook()
+        bot.set_webhook(url=os.environ['APP_URL'] + os.environ['TELEGRAM_BOT_TOKEN'])
+
+    logger.console_logger.info('Set webhook')
+
 else:
     raise EnvironmentError
 
 logger.console_logger.info('Bot token set')
-
-if 'APP_URL' in os.environ.keys():
-    bot.remove_webhook()
-    bot.set_webhook(url=os.environ['APP_URL'] + os.environ['TELEGRAM_BOT_TOKEN'])
-
-logger.console_logger.info('Set webhook')
 
 
 def configurate(app):
