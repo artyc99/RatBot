@@ -2,11 +2,11 @@ import logging
 
 
 class Log:
-    def __init__(self, filename, log_level):
+    def __init__(self, filename, log_level, logger_name=__name__):
         # Initializing logging with config
-        self.file_logger = logging.getLogger(__name__)
+        self.file_logger = logging.getLogger(logger_name)
         self.file_logger.setLevel(log_level)
-        self.console_logger = logging.getLogger(__name__)
+        self.console_logger = logging.getLogger(logger_name)
         self.console_logger.setLevel(log_level)
 
         # Create handler for file writing
