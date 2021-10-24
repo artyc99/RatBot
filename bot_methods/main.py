@@ -3,7 +3,8 @@ from app_config import bot
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+    # bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+    bot.send_message(message.chat.id, 'Hello, ' + message.from_user.first_name)
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
