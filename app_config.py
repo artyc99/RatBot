@@ -15,10 +15,8 @@ else:
 
 logger.console_logger.info('Starting app')
 
-apihelper.proxy = {'http': 'http://0.0.0.0:80'}
-
 if 'TELEGRAM_BOT_TOKEN' in os.environ.keys():
-    bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
+    bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'], threaded=False)
 
 else:
     raise EnvironmentError
