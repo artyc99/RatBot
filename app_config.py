@@ -1,6 +1,7 @@
 import os
 
 import telebot
+from telebot import apihelper
 
 from bot_logger import Log
 
@@ -13,6 +14,8 @@ else:
     raise EnvironmentError
 
 logger.console_logger.info('Starting app')
+
+apihelper.proxy = {'http': 'http://0.0.0.0:80'}
 
 if 'TELEGRAM_BOT_TOKEN' in os.environ.keys():
     bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
