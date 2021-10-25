@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 app = configurate(app)
 
+from bot_methods import main
+
 
 if __name__ == '__main__':
 
